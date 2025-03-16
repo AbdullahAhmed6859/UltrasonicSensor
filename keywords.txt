@@ -1,0 +1,13 @@
+# Syntax Coloring Map For UltrasonicSensor Library
+
+# Datatypes (KEYWORD1)
+UltrasonicSensor	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+begin	KEYWORD2
+getDistanceCm	KEYWORD2
+setTemperature	KEYWORD2
+setTimeout	KEYWORD2
+getAverageDistanceCm	KEYWORD2
+
+# Constants (LITERAL1)
