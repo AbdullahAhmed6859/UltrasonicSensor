@@ -19,16 +19,6 @@ UltrasonicSensor::UltrasonicSensor(int trig, int echo, float temp)
   updateSpeedOfSound();
 }
 
-UltrasonicSensor::UltrasonicSensor(int trig, int echo)
-    : trigPin(trig),
-      echoPin(echo),
-      temperature(26),
-      timeOut(30000)  // Default timeout (about 5m max distance)
-{
-  // Initialize speed of sound
-  updateSpeedOfSound();
-}
-
 void UltrasonicSensor::begin() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
