@@ -20,7 +20,7 @@ const int numSensors = 3;
 UltrasonicSensor sensors[numSensors] = {
   {12, 11},  // Sensor 1: Trigger = 14, Echo = 13
   {14, 13},  // Sensor 2: Trigger = 18, Echo = 17
-  {16, 15}     // Sensor 3: Trigger = 6, Echo = 5
+  {17, 15}     // Sensor 3: Trigger = 6, Echo = 5
 };
 
 void setup() {
@@ -43,5 +43,5 @@ void loop() {
   }
 
   Serial.println();
-  delay(20);
+  delay(200);
 }

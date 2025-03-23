@@ -43,6 +43,9 @@ class UltrasonicSensor {
 
   // Perform multiple readings and return average (for better accuracy)
   float getAverageDistanceCm(int numReadings = 5);
+
+  // Perform multiple readings and return median using insertion sort
+  float getMedianDistanceCm(int numReadings = 5);
 };
 
 #endif

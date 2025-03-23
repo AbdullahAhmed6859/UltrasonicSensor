@@ -6,8 +6,6 @@
 
 #include "UltrasonicSensor.h"
 
-#include <Energia.h>  // For TivaC using Energia
-
 // Constructor with initializer list
 UltrasonicSensor::UltrasonicSensor(int trig, int echo, float temp)
     : trigPin(trig),
@@ -81,4 +79,44 @@ float UltrasonicSensor::getAverageDistanceCm(int numReadings) {
   }
 
   return total / validReadings;
+}
+
+float UltrasonicSensor::getMedianDistanceCm(int numReadings) {
+  if (numReadings <= 0) {
+    return -1;
+  }
+
+  // Create array to store readings
+  float readings[numReadings];
+  int validReadings = 0;
+
+  // Collect valid readings
+  for (int i = 0; i < numReadings; i++) {
+    float distance = getDistanceCm();
+    if (distance >= 0) {
+      // Insertion sort - insert new reading in the right position
+      int j = validReadings;
+      while (j > 0 && readings[j - 1] > distance) {
+        readings[j] = readings[j - 1];
+        j--;
+      }
+      readings[j] = distance;
+      validReadings++;
+    }
+    // delay(10);  // Short delay between readings
+  }
+
+  if (validReadings == 0) {
+    return -1;
+  }
+
+  // Return median value
+  if (validReadings % 2 == 0) {
+    // Even number of readings, return average of middle two
+    return (readings[validReadings / 2 - 1] + readings[validReadings / 2]) /
+           2.0;
+  } else {
+    // Odd number of readings, return middle one
+    return readings[validReadings / 2];
+  }
 }
